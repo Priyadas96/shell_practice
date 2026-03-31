@@ -1,3 +1,4 @@
+#!/bin/bash
 Person1 = Trump
 Person2 = Musk
 echo "Person1:: Hello Person2, How are you"
