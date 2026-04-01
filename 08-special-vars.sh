@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "All variables passed to the script: $@"
-echo "number of variables : @#"
+echo "number of variables : $#"
 echo "Script name : $0"
 echo "Current directory : $PWD"
 echo "User running the Script: $USER"
