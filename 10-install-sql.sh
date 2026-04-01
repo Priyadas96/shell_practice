@@ -5,9 +5,9 @@ userid=$(id -u)
 if [ $userid -ne 0 ]
 then
     echo "Error:: Please login with root access"
+    exit 1
 else
     echo "you are root access"
-    exit 1
 fi
 
 dnf install mysql -y
