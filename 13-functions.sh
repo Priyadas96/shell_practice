@@ -9,10 +9,10 @@ userid=$(id -u) #root - 0 and non-root 1-136
 
 if [ $userid -ne 0 ]
 then
-    echo -e "Please login with root access."
+    echo -e "$Y Please login with root access. $Z"
     exit 1
 else
-    echo "Root user LoggedIn"
+    echo -e "$G Root user LoggedIn $Z"
 fi
 
 
@@ -35,7 +35,7 @@ then
     dnf install mysql -y
     validate $? "mysql"
 else
-    echo "Mysql already installed"
+    echo -e "$G Mysql already installed $Z"
 fi
 
 #Python Installation
