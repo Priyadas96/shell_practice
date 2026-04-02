@@ -4,18 +4,23 @@ userid=$(id -u) #root - 0 and non-root 1-136
 
 if [ $userid -ne 0 ]
 then
-    echo "Please login with root access."
+    echo -e "Please login with root access."
     exit 1
 else
     echo "Root user LoggedIn"
 fi
 
+R= "\e[31m"
+G= "\e[32m"
+Y= "\e[33m"
+Z="\e[0m"
+
 validate(){
  if [ $? -eq 0 ]
     then 
-        echo "$2 Installation :: Success"
+        echo -e "$2 Installation :: $G Success $Z"
     else
-        echo "$2 installation :: Failure"
+        echo -e "$2 installation :: $R Failure $Z"
         exit 1
     fi
 }
@@ -24,7 +29,7 @@ validate(){
 dnf list installed mysql
 if [ $? -ne 0 ]
 then
-    echo "Mysql not available....trying to install now"
+    echo -e "Mysql not available.... $Y trying to install now $Z"
     dnf install mysql -y
     validate $? "mysql"
 else
@@ -35,20 +40,20 @@ fi
 dnf list installed python3
 if [ $? -ne 0 ]
 then
-    echo "Python3 not available...trying to install now"
+    echo -e "Python3 not available...$Y trying to install now $Z"
     dnf install python3 -y
     validate $? "python3"
 else
-    echo "Python3 is already installed"
+    echo -e "$G Python3 is already installed $Z"
 fi
 
 #Nginx Installation
 dnf list installed nginx
 if [ $? -ne 0 ]
 then
-    echo "Nginx not available.. trying to Install now"
+    echo -e "Nginx not available.. $Y trying to Install now $Z"
     dnf install nginx -y
     validate $? "nginx"
 else
-    echo "Nginx already installed"
+    echo -e "$G Nginx already installed $Z"
 fi
