@@ -10,7 +10,7 @@ else
 fi
 
 dnf list installed mysql
-if [ $? -eq 0 ]
+if [ $? -ne 0 ]
 then
     echo "Info :: Mysql not available....Mysql going to be installed now "
 else
