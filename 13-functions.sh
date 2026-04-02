@@ -40,7 +40,6 @@ then
     validate $? "python"
 else
     echo "Python is already installed"
-    exit 1
 fi
 
 #Nginx Installation
@@ -52,5 +51,4 @@ then
     validate $? "nginx"
 else
     echo "Nginx already installed"
-    exit 1
 fi
