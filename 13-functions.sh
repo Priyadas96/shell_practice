@@ -1,5 +1,10 @@
 #!/bin/bash
 
+R="\e[31m"
+G="\e[32m"
+Y="\e[33m"
+Z="\e[0m"
+
 userid=$(id -u) #root - 0 and non-root 1-136
 
 if [ $userid -ne 0 ]
@@ -10,10 +15,7 @@ else
     echo "Root user LoggedIn"
 fi
 
-R= "\e[31m"
-G= "\e[32m"
-Y= "\e[33m"
-Z="\e[0m"
+
 
 validate(){
  if [ $? -eq 0 ]
