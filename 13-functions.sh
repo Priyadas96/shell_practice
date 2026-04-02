@@ -18,9 +18,6 @@ validate(){
         echo "$2 installation :: Failure"
         exit 1
     fi
-else
-    echo "Mysql already installed"
-
 }
 
 #Mysql Installation
