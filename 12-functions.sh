@@ -16,3 +16,4 @@ then
     exit 1
 else
     echo "Mysql already Installed...!"
+fi
