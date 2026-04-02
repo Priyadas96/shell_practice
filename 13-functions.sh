@@ -32,14 +32,14 @@ else
 fi
 
 #Python Installation
-dnf list installed python
+dnf list installed python3
 if [ $? -ne 0 ]
 then
-    echo "Python not available...trying to install now"
-    dnf install python -y
-    validate $? "python"
+    echo "Python3 not available...trying to install now"
+    dnf install python3 -y
+    validate $? "python3"
 else
-    echo "Python is already installed"
+    echo "Python3 is already installed"
 fi
 
 #Nginx Installation
