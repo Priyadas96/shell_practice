@@ -10,19 +10,26 @@ else
     echo "Root user LoggedIn"
 fi
 
+validate(){
+ if [ $? -eq 0 ]
+    then 
+        echo "$2 Installation :: Success"
+    else
+        echo "$2 installation :: Failure"
+        exit 1
+    fi
+else
+    echo "Mysql already installed"
+
+}
+
 #Mysql Installation
 dnf list installed mysql
 if [ $? -ne 0 ]
 then
     echo "Mysql not available....trying to install now"
     dnf install mysql -y
-    if [ $? -eq 0 ]
-    then 
-        echo "Mysql Installation :: Success"
-    else
-        echo "Mysql installation :: Failure"
-        exit 1
-    fi
+    validate $? "mysql"
 else
     echo "Mysql already installed"
 fi
@@ -33,13 +40,7 @@ if [ $? -ne 0 ]
 then
     echo "Python not available...trying to install now"
     dnf install python -y
-    if [ $? -eq 0 ]
-    then
-        echo "Python Installation :: Success"
-    else
-        echo "Python Installation :: Failure"
-        exit 1
-    fi
+    validate $? "python"
 else
     echo "Python is already installed"
     exit 1
@@ -51,13 +52,7 @@ if [ $? -ne 0 ]
 then
     echo "Nginx not available.. trying to Install now"
     dnf install nginx -y
-    if [ $? -eq 0 ]
-    then
-        echo "Nginx Installation : Success"
-    else
-        echo "Nginx Installation : Failure"
-        exit 1
-    fi
+    validate $? "nginx"
 else
     echo "Nginx already installed"
     exit 1
