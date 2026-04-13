@@ -53,7 +53,7 @@ fi
 dnf list installed nginx
 if [ $? -ne 0 ]
 then
-    echo -e "Nginx not available.. $Y trying to Install now $Z"
+    echo -e "$R Nginx not available $Z.. $Y trying to Install now $Z"
     dnf install nginx -y
     validate $? "nginx"
 else
