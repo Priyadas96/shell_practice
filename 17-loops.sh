@@ -7,12 +7,12 @@ G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
 
-LOGS_FOLDER="/var/log/shell-scripts-logs"
+LOG_FOLDER="/var/log/shell-scripts-logs"
 SCRIPT_FILE=$(echo $0 | cut -d "." -f1)
-LOGS_FILE="$LOGS_FOLDER/$SCRIPT_FILE.log"
+LOGS_FILE="$LOG_FOLDER/$SCRIPT_FILE.log"
 PACKAGES=("mysql" "python" "nginx" "httpd")
 
-mkdir -p $LOGS_FOLDER
+mkdir -p $LOG_FOLDER
 echo "script started executing at: $(date)" | tee -a $LOGS_FILE
 
 if [ $USERID -ne 0 ]; then

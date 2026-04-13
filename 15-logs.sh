@@ -13,51 +13,46 @@ LOG_FILE="$LOGS_FOLDER/$SCRIPT_NAME.log"
 mkdir -p $LOGS_FOLDER
 echo "Script started executed at: $(date)" | tee -a $LOG_FILE
 
-Validate(){
-    if [ $? -eq 0 ]
-    then
-        echo -e "Installing $2 is ... $G SUCCESS $N" | tee -a $LOG_FILE
-    else
-        echo -e "Installing $2 is ... $R Failure $N" | tee -a $LOG_FILE
-        exit 1
-    fi
+Validate() {
+	if [ $? -eq 0 ]; then
+		echo -e "Installing $2 is ... $G SUCCESS $N" | tee -a $LOG_FILE
+	else
+		echo -e "Installing $2 is ... $R Failure $N" | tee -a $LOG_FILE
+		exit 1
+	fi
 }
 
 #Check where Logged In user is ROOT or not
-if [ $USERID -ne 0 ]
-then
-    echo -e "$R ERROR:: Please login with Root access$N" | tee -a $LOG_FILE
-    exit 1
+if [ $USERID -ne 0 ]; then
+	echo -e "$R ERROR:: Please login with Root access$N" | tee -a $LOG_FILE
+	exit 1
 else
-    echo -e "$G User LoggedIN as ROOT $N" | tee -a $LOG_FILE
+	echo -e "$G User LoggedIN as ROOT $N" | tee -a $LOG_FILE
 fi
 
 dnf list installed mysql &>>$LOG_FILE
-if [ $? -ne 0 ]
-then
-    echo -e "$Y Not Installed mySQL.. going to Install now $N" | tee -a $LOG_FILE
-    dnf install mysql -y &>>$LOG_FILE
-    Validate $? "MySQL"
+if [ $? -ne 0 ]; then
+	echo -e "$Y Not Installed mySQL.. going to Install now $N" | tee -a $LOG_FILE
+	dnf install mysql -y &>>$LOG_FILE
+	Validate $? "MySQL"
 else
-    echo -e "Nothing to do ... $Y already installed $N" | tee -a $LOG_FILE
+	echo -e "Nothing to do ... $Y already installed $N" | tee -a $LOG_FILE
 fi
 
 dnf list installed python3 &>>$LOG_FILE
-if [ $? -ne 0 ]
-then
-    echo -e "$Y Not installed Python...going to install now $N" | tee -a $LOG_FILE
-    dnf install python3 -y &>>$LOG_FILE
-    Validate $? "python3"
+if [ $? -ne 0 ]; then
+	echo -e "$Y Not installed Python...going to install now $N" | tee -a $LOG_FILE
+	dnf install python3 -y &>>$LOG_FILE
+	Validate $? "python3"
 else
-    echo -e "Nothing to do ...$Y already installed $N" | tee -a $LOG_FILE
+	echo -e "Nothing to do ...$Y already installed $N" | tee -a $LOG_FILE
 fi
 
 dnf list installed nginx &>>$LOG_FILE
-if [ $? -ne 0 ]
-then
-    echo -e "$Y Not installed nginx...going to install now $N" | tee -a $LOG_FILE
-    dnf install nginx -y &>>$LOG_FILE
-    Validate $? "nginx"
+if [ $? -ne 0 ]; then
+	echo -e "$Y Not installed nginx...going to install now $N" | tee -a $LOG_FILE
+	dnf install nginx -y &>>$LOG_FILE
+	Validate $? "nginx"
 else
-    echo -e "Nothing to do ...$Y already installed $N" | tee -a $LOG_FILE
+	echo -e "Nothing to do ...$Y already installed $N" | tee -a $LOG_FILE
 fi
