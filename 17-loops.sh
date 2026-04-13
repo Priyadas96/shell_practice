@@ -23,7 +23,7 @@ else
 fi
 
 Validate() {
-	if [ $? -ne 0 ]; then
+	if [ $1 -eq 0 ]; then
 		echo -e "Installing $2 is ...$G Success $N" | tee -a $LOGS_FILE
 	else
 		echo -e "Installing $2 is ...$R Failure $N" | tee -a $LOGS_FILE
