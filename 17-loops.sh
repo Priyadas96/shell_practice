@@ -8,7 +8,7 @@ Y="\e[33m"
 N="\e[0m"
 
 LOGS_FOLDER="/var/log/shell-scripts-logs"
-SCRIPT_FILE=$(echo $0 | cut -d "." f1)
+SCRIPT_FILE=$(echo $0 | cut -d "." -f1)
 LOGS_FILE="$LOGS_FOLDER/$SCRIPT_FILE.log"
 PACKAGES=("mysql" "python" "nginx" "httpd")
 
