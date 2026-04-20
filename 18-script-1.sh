@@ -5,4 +5,4 @@ echo "PID of 18-script-1:  $$"
 
 #./19-script-2.sh
 
-source ./19-script-2.sh
+source ./19-script-2.shcd ..
