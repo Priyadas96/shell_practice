@@ -5,4 +5,4 @@ echo "$GREETING"
 
 echo "PID of SCRIPT 1:  $$"
 
-./script-2.sh
+./19-script-2.sh
