@@ -1,7 +1,7 @@
 #!/bin/bash
 
 DISK_USAGE=$(df -hT | grep -v Filesystem)
-DISK_THRESHOLD=1
+DISK_THRESHOLD=50
 
 while IFS= read line; do
 	USAGE=$(echo $line | awk '{print $6F}' | cut -d "%" -f1)
