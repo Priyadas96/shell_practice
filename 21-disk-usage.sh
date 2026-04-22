@@ -3,6 +3,7 @@
 DISK_USAGE=$(df -hT | grep -v Filesystem)
 DISK_THRESHOLD=1
 MSG=""
+IP=$(curl http://169.254.169.254/latest/meta-data/local-ipv4)
 
 while IFS= read line; do
 	USAGE=$(echo $line | awk '{print $6F}' | cut -d "%" -f1)
@@ -12,3 +13,4 @@ while IFS= read line; do
 	fi
 done <<<$DISK_USAGE
 echo -e $MSG
+sh mail.sh "DevOps Team" "High Disk Usage" "$IP" "$MSG" "info@joindevops.com" "ALERT-High Disk Usage"
